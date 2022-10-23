@@ -1,0 +1,13 @@
+.members {
+  position: relative;
+  height: 100%;
+
+  &__amount {
+    padding: 10px 0;
+    border-top: 1px solid #000;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+  }
+}

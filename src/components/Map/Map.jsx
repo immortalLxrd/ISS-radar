@@ -1,16 +1,16 @@
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-import cl from "./MapComponent.module.scss";
+import cl from "./Map.module.scss";
 
-export const MapComponent = ({ apiKey, position }) => {
+export const Map = ({ apiKey, position }) => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: apiKey,
   });
 
   if (!isLoaded) return <div>Loading...</div>;
-  return <Map position={position} />;
+  return <MapComponent position={position} />;
 };
 
-function Map({ position }) {
+function MapComponent({ position }) {
   return (
     <div className={cl.container}>
       <GoogleMap zoom={3} center={position} mapContainerClassName={cl.map}>

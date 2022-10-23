@@ -1,32 +1,22 @@
 import React from "react";
 import "./styles/App.scss";
-import { useFetchWithInterval } from "./hooks/useFetchWithInterval";
-import { MapComponent } from "./components/MapComponent/MapComponent";
-
-const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-const URL = "http://api.open-notify.org/iss-now.json";
+import { Time } from "./components/Time/Time";
+import { Position } from "./components/Position/Position";
+import { Members } from "./components/Members/Members";
 
 function App() {
-  const [data, loading] = useFetchWithInterval(URL);
-  const position = data
-    ? {
-        lat: Number(data.iss_position.latitude),
-        lng: Number(data.iss_position.longitude),
-      }
-    : { lat: 0, lng: 0 };
-
   return (
-    <div className="App">
-      <div className="_container">
-        {loading ? (
-          <div>loading...</div>
-        ) : (
-          <ul>
-            <li>latitude: {position.lat}</li>
-            <li>longitude: {position.lng}</li>
-          </ul>
-        )}
-        <MapComponent apiKey={GOOGLE_MAPS_API_KEY} position={position} />
+    <div className="_container">
+      <div className="App">
+        <div id="PositionComponent">
+          <Position />
+        </div>
+        <div className="wrapper">
+          <Time />
+        </div>
+        <div className="wrapper">
+          <Members />
+        </div>
       </div>
     </div>
   );
