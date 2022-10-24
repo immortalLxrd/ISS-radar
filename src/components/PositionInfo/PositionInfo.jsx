@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 export const PositionInfo = ({ loading, error }) => {
   const position = useSelector((state) => state.position);
 
-  if (loading) return <div>Loadind...</div>;
+  if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (

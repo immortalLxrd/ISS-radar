@@ -6,7 +6,7 @@ import cl from "./Members.module.scss";
 export const Members = ({ loading, error }) => {
   const data = useSelector((state) => state.members);
 
-  if (loading) return <div>Loadind...</div>;
+  if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
