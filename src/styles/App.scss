@@ -2,21 +2,21 @@ h2 {
   font-weight: bold;
 }
 
-._container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+._wrapper {
+  position: absolute;
+  top: 50%; 
+  right: 50%;
+  transform: translate(50%,-50%);
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 880px 300px;
+  grid-template-rows: 72px auto;
+  grid-gap: 10px;
 }
 
 .wrapper {
   border: 1px solid #000;
   padding: 10px;
 }
-
-.App {
-  display: grid;
-  grid-template-columns: auto 300px;
-  grid-template-rows: 72px auto;
-  grid-gap: 10px;
-}
-

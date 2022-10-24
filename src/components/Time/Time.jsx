@@ -43,7 +43,8 @@ export const Time = () => {
     <div className={cl.time}>
       <h2>
         Current UTC time: {prependZero(currentTime.getUTCHours())}:
-        {prependZero(currentTime.getUTCMinutes())}
+        {prependZero(currentTime.getUTCMinutes())}:
+        {prependZero(currentTime.getUTCSeconds())}
       </h2>
       <p>
         {days[currentTime.getUTCDay()]}, {currentTime.getUTCDate()}{" "}

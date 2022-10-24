@@ -13,8 +13,10 @@ const POSITION_URL = "http://api.open-notify.org/iss-now.json";
 const MEMBERS_URL = "http://api.open-notify.org/astros.json";
 
 function App() {
-  const [positionData] = useFetchWithInterval(POSITION_URL);
-  const [membersData] = useFetchWithInterval(MEMBERS_URL);
+  const [positionData, loadingPosition, errorPosition] =
+    useFetchWithInterval(POSITION_URL);
+  const [membersData, loadingMembers, errorMembers] =
+    useFetchWithInterval(MEMBERS_URL);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,11 +27,7 @@ function App() {
         }
       : { lat: 0, lng: 0 };
     const members = membersData
-      ? membersData.people.filter((item) => {
-          if (item.craft === "ISS") {
-            return item;
-          }
-        })
+      ? membersData.people.filter((item) => item.craft === "ISS")
       : [];
 
     dispatch(allActions.positionActions.setPosition(position));
@@ -37,17 +35,19 @@ function App() {
   }, [positionData, membersData]);
 
   return (
-    <div className="_container">
-      <div className="App">
-        <div className="wrapper">
-          <PositionInfo />
-        </div>
-        <div className="wrapper">
-          <Time />
-        </div>
-        <Map apiKey={GOOGLE_MAPS_API_KEY} />
-        <div className="wrapper">
-          <Members />
+    <div className="_wrapper">
+      <div className="_container">
+        <div className="app">
+          <div className="wrapper">
+            <PositionInfo loading={loadingPosition} error={errorPosition} />
+          </div>
+          <div className="wrapper">
+            <Time />
+          </div>
+          <Map apiKey={GOOGLE_MAPS_API_KEY} />
+          <div className="wrapper">
+            <Members loading={loadingMembers} error={errorMembers} />
+          </div>
         </div>
       </div>
     </div>
