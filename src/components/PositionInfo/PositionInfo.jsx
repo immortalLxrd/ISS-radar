@@ -1,8 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-export const PositionInfo = ({ loading, error, position }) => {
-  if (loading) return <div>Loading</div>;
-  if (error) return <div>Error: {error}</div>;
+export const PositionInfo = () => {
+  const position = useSelector((state) => state.position);
 
   return (
     <>
